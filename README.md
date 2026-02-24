@@ -1,6 +1,6 @@
 # Data Restore PDX
 
-## Data Restore PDX - data recovery from damaged media - [https://datarestorepdx.vercel.app](https://https://datarestorepdx.vercel.app/?utm_source=github&utm_medium=readme)
+## Data Restore PDX - data recovery from damaged media - [https://datarestorepdx.vercel.app](https://datarestorepdx.vercel.app/?utm_source=github&utm_medium=readme)
 
 ### Installation & control
 
