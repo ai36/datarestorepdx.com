@@ -44,7 +44,7 @@ export function CookieBanner() {
             onClick={() => {
               setCookie(cookieName, "granted");
               setVisible(false);
-              window.dispatchEvent(new Event("analytics-consent-granted"));
+              window.dispatchEvent(new Event(`${cookieName}-granted`));
             }}
           >
             Accept
