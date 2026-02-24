@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@source "../**/*.{ts,tsx}";
+
+
+@layer base {
+  :root {
+    --background: 210 25% 97%;
+    --foreground: 215 28% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 10%;
+
+    --primary: 213 56% 16%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 18% 93%;
+    --secondary-foreground: 215 28% 10%;
+
+    --muted: 210 16% 93%;
+    --muted-foreground: 215 14% 46%;
+
+    --accent: 195 85% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 195 85% 42%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(213 56% 16%), hsl(213 56% 24%));
+    --gradient-accent: linear-gradient(135deg, hsl(195 85% 42%), hsl(195 85% 52%));
+    --gradient-hero: linear-gradient(180deg, hsl(213 56% 10%) 0%, hsl(213 56% 16%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0 0% 100% / 0.1), hsla(0 0% 100% / 0.05));
+    --shadow-glow: 0 0 40px hsla(195 85% 42% / 0.15);
+    --shadow-card: 0 1px 3px hsla(215 28% 10% / 0.05), 0 10px 30px hsla(215 28% 10% / 0.08);
+    --shadow-card-hover: 0 4px 12px hsla(215 28% 10% / 0.08), 0 20px 40px hsla(215 28% 10% / 0.12);
+
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/60 rounded-xl;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  .accent-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .step-number {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-full text-sm font-mono font-semibold;
+    background-image: var(--gradient-accent);
+    @apply text-accent-foreground;
+  }
+}
+
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
