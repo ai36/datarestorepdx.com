@@ -1,45 +1,44 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 function getCookie(name: string) {
+  if (typeof document === "undefined") return null;
   const m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
   return m ? decodeURIComponent(m[1]) : null;
 }
 
-export function AnalyticsGate({ gaId, isProdDeployment }: { gaId: string; isProdDeployment: boolean }) {
-  const cookieName = `analytics_${process.env.NEXT_PUBLIC_PROJECT_NAME.toLowerCase()}_consent`;
+export function AnalyticsGate({
+  gaId,
+  isProdDeployment,
+}: {
+  gaId: string;
+  isProdDeployment: boolean;
+}) {
+  const [isAllowed, setIsAllowed] = useState(true);
 
   useEffect(() => {
-    if (!isProdDeployment || !gaId) return;
+    const consent = getCookie("analytics_consent");
+    setIsAllowed(consent !== "denied");
+  }, []);
 
-    const consent = getCookie(cookieName);
-    const granted = consent === "granted";
+  useEffect(() => {
+    const onGranted = () => setIsAllowed(true);
+    const onDenied = () => setIsAllowed(false);
 
-    window.gtag?.("consent", "default", {
-      analytics_storage: granted ? "granted" : "denied",
-    });
-
-    const onGranted = () => {
-      window.gtag?.("consent", "update", { analytics_storage: "granted" });
-      window.gtag?.("event", "page_view");
-    };
-
-    const onDenied = () => {
-      window.gtag?.("consent", "update", { analytics_storage: "denied" });
-    };
-
-    window.addEventListener(`${cookieName}-granted`, onGranted);
-    window.addEventListener(`${cookieName}-denied`, onDenied);
+    window.addEventListener("analytics-consent-granted", onGranted);
+    window.addEventListener("analytics-consent-denied", onDenied);
 
     return () => {
-      window.removeEventListener(`${cookieName}-granted`, onGranted);
-      window.removeEventListener(`${cookieName}-denied`, onDenied);
+      window.removeEventListener("analytics-consent-granted", onGranted);
+      window.removeEventListener("analytics-consent-denied", onDenied);
     };
-  }, [gaId, isProdDeployment]);
+  }, []);
 
-  if (!isProdDeployment || !gaId) return null;
+  if (!isProdDeployment) return null;
+  if (!gaId) return null;
+  if (!isAllowed) return null;
 
   return <GoogleAnalytics gaId={gaId} />;
 }
