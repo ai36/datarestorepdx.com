@@ -24,3 +24,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Tailwind CSS
 - Radix-UI
 - Lucide (Icons for React)
+
+## ToDo
+
+[23/02/26] The `eslint-plugin-react-hooks` plugin is currently incompatible with eslint 10, so it has been temporarily removed from the project. It should be re-enabled in the future.
+
+```sh
+npm i eslint-plugin-react-hooks@latest
+```
