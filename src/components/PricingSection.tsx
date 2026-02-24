@@ -60,7 +60,7 @@ const PricingSection = () => {
                   key={t}
                   className="flex items-start gap-2 text-sm text-muted-foreground"
                 >
-                  <Check className="h-4 w-4 mt-0.5 text-accent flex-shrink-0" />
+                  <Check className="h-4 w-4 mt-0.5 text-accent shrink-0" />
                   {t}
                 </li>
               ))}
@@ -112,7 +112,7 @@ const PricingSection = () => {
                   key={t}
                   className="flex items-start gap-2 text-sm text-muted-foreground"
                 >
-                  <Check className="h-4 w-4 mt-0.5 text-accent flex-shrink-0" />
+                  <Check className="h-4 w-4 mt-0.5 text-accent shrink-0" />
                   {t}
                 </li>
               ))}

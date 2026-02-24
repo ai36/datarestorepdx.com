@@ -19,7 +19,7 @@ const HeroSection = () => {
           loading="eager"
         />
         <div className="absolute inset-0 hero-overlay opacity-80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/60 to-primary/40" />
+        <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/60 to-primary/40" />
       </div>
 
       <div className="relative z-10 container-narrow mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
