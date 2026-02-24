@@ -55,6 +55,7 @@ export function CookieBanner() {
             onClick={() => {
               setCookie(cookieName, "denied");
               setVisible(false);
+              window.dispatchEvent(new Event(`${cookieName}-denied`));
             }}
           >
             Decline

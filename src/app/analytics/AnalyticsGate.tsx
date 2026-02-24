@@ -1,33 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 function getCookie(name: string) {
-  if (typeof document === "undefined") return null;
   const m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
   return m ? decodeURIComponent(m[1]) : null;
 }
 
-export function AnalyticsGate({
-  gaId,
-  isProdDeployment,
-}: {
-  gaId: string;
-  isProdDeployment: boolean;
-}) {
+export function AnalyticsGate({ gaId, isProdDeployment }: { gaId: string; isProdDeployment: boolean }) {
   const cookieName = `analytics_${process.env.NEXT_PUBLIC_PROJECT_NAME.toLowerCase()}_consent`;
-  
-  const [isAllowed, setIsAllowed] = useState(true);
 
   useEffect(() => {
+    if (!isProdDeployment || !gaId) return;
+
     const consent = getCookie(cookieName);
-    setIsAllowed(consent !== "denied");
-  }, []);
+    const granted = consent === "granted";
 
-  useEffect(() => {
-    const onGranted = () => setIsAllowed(true);
-    const onDenied = () => setIsAllowed(false);
+    window.gtag?.("consent", "default", {
+      analytics_storage: granted ? "granted" : "denied",
+    });
+
+    const onGranted = () => {
+      window.gtag?.("consent", "update", { analytics_storage: "granted" });
+      window.gtag?.("event", "page_view");
+    };
+
+    const onDenied = () => {
+      window.gtag?.("consent", "update", { analytics_storage: "denied" });
+    };
 
     window.addEventListener(`${cookieName}-granted`, onGranted);
     window.addEventListener(`${cookieName}-denied`, onDenied);
@@ -36,11 +37,9 @@ export function AnalyticsGate({
       window.removeEventListener(`${cookieName}-granted`, onGranted);
       window.removeEventListener(`${cookieName}-denied`, onDenied);
     };
-  }, []);
+  }, [gaId, isProdDeployment]);
 
-  if (!isProdDeployment) return null;
-  if (!gaId) return null;
-  if (!isAllowed) return null;
+  if (!isProdDeployment || !gaId) return null;
 
   return <GoogleAnalytics gaId={gaId} />;
 }
