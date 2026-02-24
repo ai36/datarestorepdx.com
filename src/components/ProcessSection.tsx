@@ -52,7 +52,7 @@ const ProcessSection = () => {
                       <span className="step-number">{s.num}</span>
                       <h3 className="font-heading font-semibold text-foreground text-lg">{s.title}</h3>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed ml-[52px]">{s.desc}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed ml-13">{s.desc}</p>
                   </div>
                 </div>
 

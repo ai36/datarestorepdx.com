@@ -6,7 +6,7 @@ export default function Logo({ scrolled }: { scrolled: boolean }) {
     <Link href="/" className="flex items-center gap-2">
       <svg
         className={cn(
-          "max-w-[160px] lg:max-w-[220px] h-auto transition-colors duration-300",
+          "max-w-40 lg:max-w-55 h-auto transition-colors duration-300",
           scrolled ? "text-foreground" : "text-white",
         )}
         width="1621"

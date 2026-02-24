@@ -70,7 +70,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/40">
+    <section id="contact" className="section-padding bg-background">
       <div className="container-narrow mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -212,7 +212,7 @@ const ContactSection = () => {
               </h3>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                  <MapPin className="h-5 w-5 text-accent mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">
                       Portland, OR
@@ -223,7 +223,7 @@ const ContactSection = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                  <MapPin className="h-5 w-5 text-accent mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">
                       Vancouver, WA
@@ -241,7 +241,7 @@ const ContactSection = () => {
                 Hours
               </h3>
               <div className="flex items-start gap-3">
-                <Clock className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                <Clock className="h-5 w-5 text-accent mt-0.5 shrink-0" />
                 <div className="text-sm text-muted-foreground space-y-1">
                   <p>Mon – Thu: 9:00 AM – 5:00 PM</p>
                   <p>Fri: 9:00 AM – 3:00 PM</p>
@@ -257,7 +257,7 @@ const ContactSection = () => {
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-accent flex-shrink-0" />
+                  <Mail className="h-5 w-5 text-accent shrink-0" />
                   <a
                     href="mailto:hello@agamalabs.com"
                     className="text-sm text-muted-foreground hover:text-foreground transition-colors"
