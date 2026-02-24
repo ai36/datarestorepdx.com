@@ -14,14 +14,16 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const isProdDeployment = process.env.VERCEL_ENV === "production";
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        {children}
-        <CookieBanner />
-      </TooltipProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          {children}
+          <CookieBanner />
+        </TooltipProvider>
+      </QueryClientProvider>
       <AnalyticsGate gaId={gaId} isProdDeployment={isProdDeployment} />
-    </QueryClientProvider>
+    </>
   );
 }
