@@ -11,7 +11,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
   const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "";
-  const isProdDeployment = process.env.VERCEL_ENV === "production";
 
   return (
     <>
@@ -23,7 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <CookieBanner />
         </TooltipProvider>
       </QueryClientProvider>
-      <AnalyticsGate gaId={gaId} isProdDeployment={isProdDeployment} />
+      <AnalyticsGate gaId={gaId} />
     </>
   );
 }

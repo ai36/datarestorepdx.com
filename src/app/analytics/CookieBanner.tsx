@@ -13,10 +13,12 @@ function setCookie(name: string, value: string, days = 365) {
 }
 
 export function CookieBanner() {
+  const cookieName = `analytics_${process.env.NEXT_PUBLIC_PROJECT_NAME.toLowerCase()}_consent`;
+
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = getCookie("analytics_consent");
+    const consent = getCookie(cookieName);
     setVisible(consent !== "granted" && consent !== "denied");
   }, []);
 
@@ -38,11 +40,11 @@ export function CookieBanner() {
         <div className="flex gap-2 justify-end">
           <button
             type="submit"
-            className="bg-accent-gradient text-accent-foreground font-semibold px-8 py-4 rounded-lg text-center hover:opacity-90 transition-opacity text-base"
+            className="bg-accent text-accent-foreground font-semibold px-8 py-4 rounded-lg text-center hover:opacity-90 transition-opacity text-base"
             onClick={() => {
-              setCookie("analytics_consent", "granted");
+              setCookie(cookieName, "granted");
               setVisible(false);
-              window.dispatchEvent(new Event("analytics-consent-granted"));
+              window.dispatchEvent(new Event(`${cookieName}-granted`));
             }}
           >
             Accept
@@ -51,8 +53,9 @@ export function CookieBanner() {
             type="submit"
             className="border border-primary/30 dark:border-primary/30 text-primary dark:text-primary font-medium px-8 py-4 rounded-lg text-center hover:bg-primary/10 transition-colors text-base"
             onClick={() => {
-              setCookie("analytics_consent", "denied");
+              setCookie(cookieName, "denied");
               setVisible(false);
+              window.dispatchEvent(new Event(`${cookieName}-denied`));
             }}
           >
             Decline
