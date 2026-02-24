@@ -1,4 +1,3 @@
-import { Shield } from "lucide-react";
 import Logo from "./logo/Logo";
 
 const Footer = () => {
@@ -15,19 +14,19 @@ const Footer = () => {
           <div className="text-right md:text-left pl-10 lg:pl-0">
             <h4 className="font-heading font-semibold text-primary-foreground text-sm mb-3">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#services" className="hover:text-primary-foreground transition-colors">USB Recovery</a></li>
-              <li><a href="#services" className="hover:text-primary-foreground transition-colors">HDD Recovery</a></li>
-              <li><a href="#services" className="hover:text-primary-foreground transition-colors">SSD Recovery</a></li>
-              <li><a href="#services" className="hover:text-primary-foreground transition-colors">Memory Cards</a></li>
+              <li><a href="/#services" className="hover:text-primary-foreground transition-colors">USB Recovery</a></li>
+              <li><a href="/#services" className="hover:text-primary-foreground transition-colors">HDD Recovery</a></li>
+              <li><a href="/#services" className="hover:text-primary-foreground transition-colors">SSD Recovery</a></li>
+              <li><a href="/#services" className="hover:text-primary-foreground transition-colors">Memory Cards</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-heading font-semibold text-primary-foreground text-sm mb-3">Company</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#process" className="hover:text-primary-foreground transition-colors">How It Works</a></li>
-              <li><a href="#pricing" className="hover:text-primary-foreground transition-colors">Pricing</a></li>
-              <li><a href="#faq" className="hover:text-primary-foreground transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-primary-foreground transition-colors">Contact</a></li>
+              <li><a href="/#process" className="hover:text-primary-foreground transition-colors">How It Works</a></li>
+              <li><a href="/#pricing" className="hover:text-primary-foreground transition-colors">Pricing</a></li>
+              <li><a href="/#faq" className="hover:text-primary-foreground transition-colors">FAQ</a></li>
+              <li><a href="/#contact" className="hover:text-primary-foreground transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>

@@ -67,11 +67,9 @@ const PricingSection = () => {
             </ul>
             <Button
               className="mt-8 w-full bg-accent text-accent-foreground hover:bg-accent/90"
-              onClick={() => {
-                router.push("/#contact");
-              }}
+              asChild
             >
-              Book Diagnostic
+              <a href="/#contact">Book Diagnostic</a>
             </Button>
           </motion.div>
 
@@ -120,11 +118,9 @@ const PricingSection = () => {
             <Button
               variant="outline"
               className="mt-8 w-full border-accent/30 text-foreground hover:bg-accent/10 hover:text-accent"
-              onClick={() => {
-                router.push("/#contact");
-              }}
+              asChild
             >
-              Get a Quote
+              <a href="/#contact">Get a Quote</a>
             </Button>
           </motion.div>
         </div>

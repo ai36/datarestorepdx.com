@@ -6,16 +6,20 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "./logo/Logo";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "How It Works", href: "/#process" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
+  const router = useRouter();
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -52,27 +56,44 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className={cn("text-sm font-medium text-muted-foreground hover:text-muted-foreground transition-colors duration-300", scrolled ? "text-foreground" : "text-white/80 hover:muted-foreground")}
+              className={cn(
+                "text-sm font-medium text-muted-foreground hover:text-muted-foreground transition-colors duration-300",
+                scrolled
+                  ? "text-foreground"
+                  : "text-white/80 hover:muted-foreground",
+              )}
             >
               {l.label}
             </a>
           ))}
+
           <Button
             size="sm"
             className="bg-accent text-accent-foreground hover:bg-accent/90 accent-glow"
+            asChild
           >
-            Start Diagnostic
+            <a href="/#contact">Start Diagnostic</a>
           </Button>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className={cn("md:hidden text-foreground", scrolled ? "text-foreground" : "text-white/80")}
+          className={cn(
+            "md:hidden text-foreground",
+            scrolled ? "text-foreground" : "text-white/80",
+          )}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
-            <X className={cn("h-6 w-6 fixed top-5 right-6 z-45 transition-colors duration-300", mobileOpen ? "text-foreground hover:text-muted-foreground" : "text-white/80")} />
+            <X
+              className={cn(
+                "h-6 w-6 fixed top-5 right-6 z-45 transition-colors duration-300",
+                mobileOpen
+                  ? "text-foreground hover:text-muted-foreground"
+                  : "text-white/80",
+              )}
+            />
           ) : (
             <Menu className="h-6 w-6 hover:text-muted-foreground transition-colors duration-300" />
           )}
@@ -99,8 +120,9 @@ const Navbar = () => {
           <Button
             size="sm"
             className="px-6 mt-2 bg-accent text-accent-foreground hover:bg-accent/90"
+            asChild
           >
-            Start Diagnostic
+            <a href="/#contact">Start Diagnostic</a>
           </Button>
         </motion.div>
       )}

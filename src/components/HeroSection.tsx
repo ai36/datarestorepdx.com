@@ -3,10 +3,8 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "public/hero-lab.jpg";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
-  const router = useRouter();
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -57,23 +55,23 @@ const HeroSection = () => {
             <Button
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 accent-glow text-base px-8 h-12"
-              onClick={() => {
-                router.push("/#pricing");
-              }}
+              asChild
             >
-              Start Diagnostic
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <a href="/#pricing">
+                Start Diagnostic
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-accent/40 text-accent hover:bg-accent/10 text-base px-8 h-12"
-              onClick={() => {
-                router.push("/#contact");
-              }}
+              asChild
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Free Consultation
+              <a href="/#contact">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Free Consultation
+              </a>
             </Button>
           </div>
 
